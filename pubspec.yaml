@@ -36,7 +36,6 @@ flutter:
     - assets/images/
     - assets/icons/
 
-  # التعديل هنا: كلمة fonts مرة واحدة بس وكل الخطوط تحتها
   fonts:
     - family: Montserrat
       fonts:

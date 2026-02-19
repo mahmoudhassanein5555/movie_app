@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'feature/details/presentation/view/details_screen.dart';
 
 class MovieApp extends StatelessWidget {
   const MovieApp({super.key});
@@ -11,7 +12,10 @@ class MovieApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp(debugShowCheckedModeBanner: false);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: const DetailsScreen(movieId: 12),
+        );
       },
     );
   }
