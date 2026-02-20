@@ -1,5 +1,4 @@
 abstract class AppStrings {
-
   static const String home = 'Home';
   static const String search = 'Search';
   static const String watchList = 'Watch list';
@@ -9,12 +8,15 @@ abstract class AppStrings {
 
   static const String addedToWatchList = 'Added to watch list';
   static const String removedFromWatchList = 'Removed from watch list';
-  static const String saveMovieAfterLoad ='Please wait for the movie details to load.';
+  static const String saveMovieAfterLoad =
+      'Please wait for the movie details to load.';
   static const String watchListEmptyTitle = 'There is no movie yet!';
-  static const String watchListEmptySubtitle = 'Find your movie by type title,\ncategories, years, etc';
-
+  static const String watchListEmptySubtitle =
+      'Find your movie by type title,\ncategories, years, etc';
+  static const String noSearchResultFound =
+      'we are sorry, we can not find the movie :(';
+  static const String failedToLoadMovies = 'Failed to load movies, try again';
   static const String fontPoppins = 'Poppins';
   static const String fontRoboto = 'Roboto';
   static const String fontMontserrat = 'Montserrat';
-  
 }
