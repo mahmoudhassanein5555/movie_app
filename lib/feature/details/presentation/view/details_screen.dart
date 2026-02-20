@@ -28,6 +28,18 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   bool isSaved = false;
+  late final GetMovieDetailsUseCase detailsUseCase;
+  late final GetSimilarMoviesUseCase similarUseCase;
+  @override
+  void initState() {
+    super.initState();
+    final api = DetailsApi();
+    final dataSource = DetailsDataSourceImpl(detailsApi: api);
+    final repo = DetailsRepoImpl(dataSource);
+
+    detailsUseCase = GetMovieDetailsUseCase(repo);
+    similarUseCase = GetSimilarMoviesUseCase(repo);
+  }
 
   void _toggleSaveMovie(BuildContext innerContext) async {
     final currentState = innerContext.read<DetailsCubit>().state;
@@ -79,12 +91,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final api = DetailsApi();
-    final dataSource = DetailsDataSourceImpl(detailsApi: api);
-    final repo = DetailsRepoImpl(dataSource);
-    final detailsUseCase = GetMovieDetailsUseCase(repo);
-    final similarUseCase = GetSimilarMoviesUseCase(repo);
-
     return BlocProvider(
       create: (context) => DetailsCubit(detailsUseCase, similarUseCase)
         ..getMovieDetails(widget.movieId)

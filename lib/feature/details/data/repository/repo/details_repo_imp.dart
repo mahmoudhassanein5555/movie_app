@@ -11,23 +11,13 @@ class DetailsRepoImpl implements BaseDetailsRepository {
 
   @override
   Future<ApiResult<MovieDetailsEntity>> getMovieDetails(int movieId) async {
-    try {
-      final result = await detailsDataSource.getMovieDetails(movieId);
-      return ApiSuccess(result);
-    } catch (error) {
-      return ApiError(error.toString());
-    }
+    return await detailsDataSource.getMovieDetails(movieId);
   }
 
   @override
   Future<ApiResult<List<SimilarMovieEntity>>> getSimilarMovies(
     int movieId,
   ) async {
-    try {
-      final result = await detailsDataSource.getSimilarMovies(movieId);
-      return ApiSuccess(result);
-    } catch (error) {
-      return ApiError(error.toString());
-    }
+    return await detailsDataSource.getSimilarMovies(movieId);
   }
 }

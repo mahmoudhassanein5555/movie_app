@@ -7,6 +7,10 @@ abstract class AppStrings {
   static const String popular = 'Popular';
   static const String retry = 'Retry';
   static const String savedToWatchlist = 'Saved to Watchlist';
+  static const String failedToLoadSimilarMovies =
+      "Failed to load similar movies";
+  static const String failedToLoadMovieDetails = "Failed to load movie details";
+  static const String networkErrorOccurred = "Network error occurred";
 
   static const String addedToWatchList = 'Added to watch list';
   static const String removedFromWatchList = 'Removed from watch list';
