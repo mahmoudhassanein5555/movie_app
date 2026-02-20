@@ -11,6 +11,7 @@ abstract class AppStrings {
       "Failed to load similar movies";
   static const String failedToLoadMovieDetails = "Failed to load movie details";
   static const String networkErrorOccurred = "Network error occurred";
+  static const String release = 'Release';
 
   static const String addedToWatchList = 'Added to watch list';
   static const String removedFromWatchList = 'Removed from watch list';
@@ -19,6 +20,8 @@ abstract class AppStrings {
   static const String watchListEmptyTitle = 'There is no movie yet!';
   static const String watchListEmptySubtitle =
       'Find your movie by type title,\ncategories, years, etc';
+  static const String watchListEmptySubtitle = 'Find your movie by type title,\ncategories, years, etc';
+  static const String unexpectedState = "Unexpected state";
 
   static const String fontPoppins = 'Poppins';
   static const String fontRoboto = 'Roboto';
