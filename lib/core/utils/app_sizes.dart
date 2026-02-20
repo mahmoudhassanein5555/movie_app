@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppSizes {
   //
   /// Heigh
+  static final double h0 = 0.4.h;
   static final double h1 = 1.h;
   static final double h2 = 2.h;
   static final double h3 = 3.h;
