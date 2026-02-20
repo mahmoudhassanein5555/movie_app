@@ -69,7 +69,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   bloc: _homeCubit,
                   builder: (context, state) {
                     if (state is HomeLoading) {
-                      return Center(child: CircularProgressIndicator());
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.orangeColor,
+                        ),
+                      );
                     }
                     if (state is HomeSuccess) {
                       return ListView.separated(
@@ -123,13 +127,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 bloc: _popularCubit,
                 builder: (context, state) {
                   if (state is HomeLoading) {
-                    return Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.orangeColor,
+                      ),
+                    );
                   }
                   if (state is HomeSuccess) {
                     return SizedBox(
                       height: AppSizes.h146,
                       width: double.infinity,
-                      child: CustomPosterWidget(state: state, onTap: () {}),
+                      child: CustomPosterWidget(
+                        movies: state.listOfMovies,
+                        onTap: () {},
+                      ),
                     );
                   }
                   if (state is HomeError) {
@@ -165,13 +176,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 bloc: _releasesCubit,
                 builder: (context, state) {
                   if (state is HomeLoading) {
-                    return Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.orangeColor,
+                      ),
+                    );
                   }
                   if (state is HomeSuccess) {
                     return SizedBox(
                       height: AppSizes.h146,
                       width: .infinity,
-                      child: CustomPosterWidget(state: state, onTap: () {}),
+                      child: CustomPosterWidget(
+                        movies: state.listOfMovies,
+                        onTap: () {},
+                      ),
                     );
                   }
                   if (state is HomeError) {

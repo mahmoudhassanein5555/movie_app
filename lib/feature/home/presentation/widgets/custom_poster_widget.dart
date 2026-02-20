@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/api_constant.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/utils/app_sizes.dart';
+import 'package:movie_app/core/utils/spacing.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class CustomPosterWidget extends StatelessWidget {
-  const CustomPosterWidget({super.key, this.state,this.onTap});
-  final state;
+  const CustomPosterWidget({super.key, required this.movies, this.onTap});
+  final List<dynamic> movies;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       scrollDirection: Axis.horizontal,
-      itemCount: state.listOfMovies.length,
+      itemCount: movies.length,
       itemBuilder: (context, index) {
-        final movie = state.listOfMovies[index];
+        final movie = movies[index];
         return GestureDetector(
           onTap: onTap,
           child: ClipRRect(
@@ -48,7 +49,7 @@ class CustomPosterWidget extends StatelessWidget {
       },
 
       separatorBuilder: (BuildContext context, int index) =>
-          SizedBox(width: AppSizes.w20),
+          horizontalSpace(AppSizes.w20),
     );
   }
 }
