@@ -13,10 +13,13 @@ class HomeApi {
         {"api_key": MoviesApiConstants.apiKey},
       );
       var response = await http.get(url);
-      var responseString = response.body;
-      var json = jsonDecode(responseString);
-      MoviesDto moviesApiModel = MoviesDto.fromJson(json);
-      return ApiSuccess<MoviesDto>(moviesApiModel);
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        var json = jsonDecode(response.body);
+        MoviesDto moviesApiModel = MoviesDto.fromJson(json);
+        return ApiSuccess<MoviesDto>(moviesApiModel);
+      } else {
+        return ApiError<MoviesDto>("Server Error: ${response.statusCode}");
+      }
     } catch (e) {
       return ApiError<MoviesDto>(e.toString());
     }
@@ -30,10 +33,13 @@ class HomeApi {
         {"api_key": MoviesApiConstants.apiKey},
       );
       var response = await http.get(url);
-      var responseString = response.body;
-      var json = jsonDecode(responseString);
-      MoviesDto moviesApiModel = MoviesDto.fromJson(json);
-      return ApiSuccess<MoviesDto>(moviesApiModel);
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        var json = jsonDecode(response.body);
+        MoviesDto moviesApiModel = MoviesDto.fromJson(json);
+        return ApiSuccess<MoviesDto>(moviesApiModel);
+      } else {
+        return ApiError<MoviesDto>("Server Error: ${response.statusCode}");
+      }
     } catch (e) {
       return ApiError<MoviesDto>(e.toString());
     }
@@ -46,11 +52,16 @@ class HomeApi {
         MoviesApiConstants.upcomingMoviesPath,
         {"api_key": MoviesApiConstants.apiKey},
       );
+
       var response = await http.get(url);
-      var reponseString = response.body;
-      var json = jsonDecode(reponseString);
-      MoviesDto moviesApiModel = MoviesDto.fromJson(json);
-      return ApiSuccess<MoviesDto>(moviesApiModel);
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        var json = jsonDecode(response.body);
+        MoviesDto moviesApiModel = MoviesDto.fromJson(json);
+        return ApiSuccess<MoviesDto>(moviesApiModel);
+      } else {
+        return ApiError<MoviesDto>("Server Error: ${response.statusCode}");
+      }
     } catch (e) {
       return ApiError<MoviesDto>(e.toString());
     }
