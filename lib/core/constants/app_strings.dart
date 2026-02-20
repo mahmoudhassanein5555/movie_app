@@ -20,7 +20,6 @@ abstract class AppStrings {
   static const String watchListEmptyTitle = 'There is no movie yet!';
   static const String watchListEmptySubtitle =
       'Find your movie by type title,\ncategories, years, etc';
-  static const String watchListEmptySubtitle = 'Find your movie by type title,\ncategories, years, etc';
   static const String unexpectedState = "Unexpected state";
 
   static const String fontPoppins = 'Poppins';
