@@ -8,8 +8,10 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 class CustomPosterWidget extends StatelessWidget {
   const CustomPosterWidget({super.key, required this.movies, this.onTap});
+
   final List<dynamic> movies;
-  final void Function()? onTap;
+  final void Function(int index)? onTap;
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -18,10 +20,13 @@ class CustomPosterWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final movie = movies[index];
         return GestureDetector(
-          onTap: onTap,
+          onTap: () {
+            if (onTap != null) {
+              onTap!(index);
+            }
+          },
           child: ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(16),
-
+            borderRadius: BorderRadius.circular(16),
             child: AspectRatio(
               aspectRatio: 100 / 146,
               child: CachedNetworkImage(
@@ -47,7 +52,6 @@ class CustomPosterWidget extends StatelessWidget {
           ),
         );
       },
-
       separatorBuilder: (BuildContext context, int index) =>
           horizontalSpace(AppSizes.w20),
     );
