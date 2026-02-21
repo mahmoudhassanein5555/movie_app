@@ -80,7 +80,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       setState(() {
         isSaved = true;
       });
-      _showFloatingSnackBar(AppStrings.savedToWatchlist, AppColors.greenColor);
+      _showFloatingSnackBar(AppStrings.savedToWatchlist, AppColors.greyColor);
     }
   }
 

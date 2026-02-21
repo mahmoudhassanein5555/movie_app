@@ -150,10 +150,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: AppSizes.h146,
                       width: double.infinity,
                       child: CustomPosterWidget(
-                        movies: state.listOfMovies,
+                        movies: state.listOfMovies
+                            .where((e) => e.posterPath != null)
+                            .toList(),
                         onTap: (index) {
                           final movieId = state.listOfMovies[index].id;
                           _navigateToDetails(context, movieId ?? 0);
+                          print("******************************************");
+                          print("path");
+                          print(state.listOfMovies[index].posterPath);
+                          print("title");
+                          print(state.listOfMovies[index].title);
+                          print("video");
+                          print(state.listOfMovies[index].video);
+                          print("voteCount");
+                          print(state.listOfMovies[index].voteCount);
+                          print("******************************************");
                         },
                       ),
                     );
@@ -206,7 +218,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: AppSizes.h146,
                       width: double.infinity,
                       child: CustomPosterWidget(
-                        movies: state.listOfMovies,
+                        movies: state.listOfMovies
+                            .where((e) => e.posterPath != null)
+                            .toList(),
                         onTap: (index) {
                           final movieId = state.listOfMovies[index].id;
                           _navigateToDetails(context, movieId ?? 0);

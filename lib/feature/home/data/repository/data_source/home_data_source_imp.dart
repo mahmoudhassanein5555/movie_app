@@ -40,6 +40,11 @@ class HomeDataSourceImp implements HomeDataSource {
       case ApiSuccess<MoviesDto>():
         final moviesDto = result.data;
         final moviesEntites = moviesDto.toEntity();
+      final movies =  moviesEntites.results!.where((e)=>e.posterPath != null).toList();
+      // final movies=  moviesEntites.results!
+      //       .where((e) => e.posterPath != null)
+      //       .map((e) => e.posterPath!)
+      //       .toList();
         return ApiSuccess<MoviesEntites>(moviesEntites);
 
       case ApiError<MoviesDto>():

@@ -35,7 +35,8 @@ class CustomPosterWidget extends StatelessWidget {
                 placeholder: (_, _) => Center(
                   child: Skeletonizer(
                     enabled: true,
-                    child: Container(color: AppColors.greyColor),
+                    enableSwitchAnimation: true,
+                    child: Container(color: const Color.fromARGB(255, 179, 187, 179)),
                   ),
                 ),
                 errorWidget: (_, _, _) => const ColoredBox(
