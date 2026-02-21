@@ -38,6 +38,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
         scrolledUnderElevation: 0,
@@ -94,19 +95,22 @@ class _SearchScreenState extends State<SearchScreen> {
                   );
                 }
                 if (state is SearchSuccess) {
-                  final results = state.results.results;
-                  if (results.isEmpty) {
+                  final validMovies = state.results.results.where((movie) {
+                    return movie.posterPath != null &&
+                        movie.posterPath.isNotEmpty;
+                  }).toList();
+                  if (validMovies.isEmpty) {
                     return const Expanded(child: NoSearchResultsWidget());
                   }
 
                   return Expanded(
                     child: ListView.separated(
                       padding: EdgeInsets.only(top: AppSizes.h24),
-                      itemCount: results.length,
+                      itemCount: validMovies.length,
                       separatorBuilder: (context, index) =>
                           verticalSpace(AppSizes.h16),
                       itemBuilder: (context, index) {
-                        final movie = results[index];
+                        final movie = validMovies[index];
                         return MovieSearchResultWidget(
                           onTap: () {
                             Navigator.push(
