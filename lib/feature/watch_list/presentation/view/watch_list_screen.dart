@@ -8,9 +8,14 @@ import '../view_model/watch_list_state.dart';
 import 'empty_watch_list_screen.dart';
 import 'non_empty_watch_list_screen.dart';
 
-class WatchListScreen extends StatelessWidget {
+class WatchListScreen extends StatefulWidget {
   const WatchListScreen({super.key});
 
+  @override
+  State<WatchListScreen> createState() => _WatchListScreenState();
+}
+
+class _WatchListScreenState extends State<WatchListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

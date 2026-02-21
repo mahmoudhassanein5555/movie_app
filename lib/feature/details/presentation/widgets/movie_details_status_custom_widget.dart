@@ -45,7 +45,9 @@ class MovieDetailsStatusCustomWidget extends StatelessWidget {
 
               BuildTagWidget(
                 icon: AppIcons.ticket,
-                text: movieDetailsEntity.genres.first,
+                text: movieDetailsEntity.genres.isNotEmpty
+                    ? movieDetailsEntity.genres.first
+                    : "NONE",
               ),
             ],
           ),

@@ -27,8 +27,10 @@ abstract class AppStrings {
   static const String fontRoboto = 'Roboto';
   static const String fontMontserrat = 'Montserrat';
   static const String unexpectedState = "Unexpected state";
+  static const String defultMinutes = "139 minutes";
 
   static const String errorTitle = 'Error ';
   static const String errorTitleTwo = 'Something went wrong';
   static const String watchListBox = 'Watch List Box';
+  static const String noSimilarMoviesFound = 'No similar movies found';
 }

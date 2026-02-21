@@ -14,15 +14,17 @@ class MovieSearchResultWidget extends StatelessWidget {
     required this.rateValue,
     required this.title,
     required this.releaseDate,
+    required this.onTap,
   });
   final String? posterPath;
   final String? title;
   final double? rateValue;
   final String? releaseDate;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: onTap,
       child: Row(
         spacing: 10,
         children: [
@@ -40,8 +42,8 @@ class MovieSearchResultWidget extends StatelessWidget {
             errorWidget: (context, url, error) =>
                 const Icon(Icons.error, color: Colors.white),
           ),
-      
-          horizontalSpace(AppSizes.w10),
+
+          horizontalSpace(10),
           Expanded(
             child: _SearchDetailsWidget(
               title: title,
@@ -84,7 +86,7 @@ class _SearchDetailsWidget extends StatelessWidget {
             fontWeight: .w400,
           ),
         ),
-        verticalSpace(AppSizes.h5),
+        verticalSpace(5),
         Row(
           spacing: 4,
           children: [
@@ -93,9 +95,9 @@ class _SearchDetailsWidget extends StatelessWidget {
               width: AppSizes.w16,
               height: AppSizes.h16,
             ),
-            horizontalSpace(AppSizes.w4),
+            horizontalSpace(4),
             Text(
-              rateValue.toString(),
+              rateValue?.toStringAsFixed(1) ?? "0.0",
               style: TextStyle(
                 fontFamily: AppStrings.fontMontserrat,
                 fontSize: AppSizes.sp12,
@@ -113,7 +115,7 @@ class _SearchDetailsWidget extends StatelessWidget {
               width: AppSizes.w16,
               height: AppSizes.h16,
             ),
-            horizontalSpace(AppSizes.w4),
+            horizontalSpace(4),
             Text(
               releaseDate.toString(),
               style: TextStyle(
@@ -133,7 +135,7 @@ class _SearchDetailsWidget extends StatelessWidget {
               width: AppSizes.w16,
               height: AppSizes.h16,
             ),
-            horizontalSpace(AppSizes.w4),
+            horizontalSpace(4),
             Text(
               releaseDate.toString(),
               style: TextStyle(
@@ -153,9 +155,9 @@ class _SearchDetailsWidget extends StatelessWidget {
               width: AppSizes.w16,
               height: AppSizes.h16,
             ),
-            horizontalSpace(AppSizes.w4),
+            horizontalSpace(4),
             Text(
-              '139 minutes',
+              AppStrings.defultMinutes,
               style: TextStyle(
                 fontFamily: AppStrings.fontMontserrat,
                 fontSize: AppSizes.sp12,

@@ -14,7 +14,7 @@ class NoSearchResultsWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: .center,
         children: [
-          verticalSpace(AppSizes.h144),
+          verticalSpace(144),
           Image.asset(
             AppImages.noResult,
             width: AppSizes.w76,
