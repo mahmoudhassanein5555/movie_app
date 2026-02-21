@@ -6,8 +6,6 @@ import 'package:movie_app/core/utils/app_sizes.dart';
 import 'package:movie_app/core/utils/spacing.dart';
 import 'package:movie_app/feature/details/presentation/widgets/app_bar/custom_app_bar.dart';
 import 'package:movie_app/feature/details/presentation/widgets/movie_banner_custom_widget.dart';
-import 'package:movie_app/feature/watch_list/domain/entites/watch_list_entity.dart';
-import 'package:movie_app/feature/watch_list/presentation/view_model/watch_list_cubit.dart';
 import '../../data/api/details_api.dart';
 import '../../data/repository/data_source/details_data_source_imp.dart';
 import '../../data/repository/repo/details_repo_imp.dart';
@@ -32,55 +30,40 @@ class _DetailsScreenState extends State<DetailsScreen> {
   bool isSaved = false;
   late final GetMovieDetailsUseCase detailsUseCase;
   late final GetSimilarMoviesUseCase similarUseCase;
-
   @override
   void initState() {
     super.initState();
     final api = DetailsApi();
     final dataSource = DetailsDataSourceImpl(detailsApi: api);
     final repo = DetailsRepoImpl(dataSource);
+
     detailsUseCase = GetMovieDetailsUseCase(repo);
     similarUseCase = GetSimilarMoviesUseCase(repo);
-    _checkIfMovieIsSaved();
-  }
-
-  void _checkIfMovieIsSaved() async {
-    final saved = await context.read<WatchListCubit>().isMovieSaved(
-      widget.movieId,
-    );
-    setState(() {
-      isSaved = saved;
-    });
   }
 
   void _toggleSaveMovie(BuildContext innerContext) async {
     final currentState = innerContext.read<DetailsCubit>().state;
     if (currentState.movieDetails == null) return;
-    final movie = currentState.movieDetails!;
-    if (isSaved) {
-      await context.read<WatchListCubit>().removeFromWatchList(widget.movieId);
+
+    /// Add WatchListCubit Code Here
+    bool isSuccess = true;
+
+    if (isSuccess) {
       setState(() {
-        isSaved = false;
+        isSaved = !isSaved;
       });
-      _showFloatingSnackBar(
-        AppStrings.removedFromWatchList,
-        AppColors.redColor,
-      );
-    } else {
-      final watchListEntity = WatchListEntity(
-        id: widget.movieId,
-        title: movie.title,
-        posterPath: movie.posterPath,
-        releaseDate: movie.releaseDate,
-        voteAverage: movie.voteAverage,
-        genre: (movie.genres.isNotEmpty) ? movie.genres.first : 'Unknown',
-        runtime: movie.runtime,
-      );
-      await context.read<WatchListCubit>().addToWatchList(watchListEntity);
-      setState(() {
-        isSaved = true;
-      });
-      _showFloatingSnackBar(AppStrings.savedToWatchlist, AppColors.greenColor);
+
+      if (isSaved) {
+        _showFloatingSnackBar(
+          AppStrings.savedToWatchlist,
+          AppColors.greenColor,
+        );
+      } else {
+        _showFloatingSnackBar(
+          AppStrings.removedFromWatchList,
+          AppColors.redColor,
+        );
+      }
     }
   }
 
@@ -139,7 +122,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 } else if (state.movieDetailsState == .error) {
                   return Center(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: .center,
                       children: [
                         Icon(
                           Icons.error,

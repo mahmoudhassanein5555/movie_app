@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/constants/api_constant.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
@@ -14,7 +15,7 @@ import 'package:movie_app/feature/home/presentation/view_model/recommended_cubit
 import 'package:movie_app/feature/home/presentation/view_model/release_cubit/home_release_cubit.dart';
 import 'package:movie_app/feature/home/presentation/widgets/custom_poster_widget.dart';
 import 'package:movie_app/feature/home/presentation/widgets/image_item_widget.dart';
-import 'package:movie_app/feature/details/presentation/view/details_screen.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   late final RecommendedCubit _homeCubit;
   late final PopularCubit _popularCubit;
   late final ReleasesCubit _releasesCubit;
-
   @override
   void initState() {
     super.initState();
@@ -45,13 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _popularCubit.close();
     _releasesCubit.close();
     super.dispose();
-  }
-
-  void _navigateToDetails(BuildContext context, int movieId) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => DetailsScreen(movieId: movieId)),
-    );
   }
 
   @override
@@ -76,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   bloc: _homeCubit,
                   builder: (context, state) {
                     if (state is HomeLoading) {
-                      return const Center(
+                      return Center(
                         child: CircularProgressIndicator(
                           color: AppColors.orangeColor,
                         ),
@@ -93,8 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             imageUrl:
                                 MoviesApiConstants.imagePath +
                                 movie.posterPath!,
-                            onTap: () =>
-                                _navigateToDetails(context, movie.id ?? 0),
+                            onTap: () {},
                           );
                         },
                         separatorBuilder: (BuildContext context, int index) =>
@@ -115,14 +107,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     } else {
-                      return const Center(
-                        child: Text(AppStrings.unexpectedState),
-                      );
+                      return Center(child: Text(AppStrings.unexpectedState));
                     }
                   },
                 ),
               ),
-
               Container(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -134,12 +123,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-
               BlocBuilder<PopularCubit, HomeState>(
                 bloc: _popularCubit,
                 builder: (context, state) {
                   if (state is HomeLoading) {
-                    return const Center(
+                    return Center(
                       child: CircularProgressIndicator(
                         color: AppColors.orangeColor,
                       ),
@@ -151,10 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: double.infinity,
                       child: CustomPosterWidget(
                         movies: state.listOfMovies,
-                        onTap: (index) {
-                          final movieId = state.listOfMovies[index].id;
-                          _navigateToDetails(context, movieId ?? 0);
-                        },
+                        onTap: () {},
                       ),
                     );
                   }
@@ -172,13 +157,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   } else {
-                    return const Center(
-                      child: Text(AppStrings.unexpectedState),
-                    );
+                    return Center(child: Text(AppStrings.unexpectedState));
                   }
                 },
               ),
-
               Container(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -190,12 +172,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-
               BlocBuilder<ReleasesCubit, HomeState>(
                 bloc: _releasesCubit,
                 builder: (context, state) {
                   if (state is HomeLoading) {
-                    return const Center(
+                    return Center(
                       child: CircularProgressIndicator(
                         color: AppColors.orangeColor,
                       ),
@@ -204,13 +185,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (state is HomeSuccess) {
                     return SizedBox(
                       height: AppSizes.h146,
-                      width: double.infinity,
+                      width: .infinity,
                       child: CustomPosterWidget(
                         movies: state.listOfMovies,
-                        onTap: (index) {
-                          final movieId = state.listOfMovies[index].id;
-                          _navigateToDetails(context, movieId ?? 0);
-                        },
+                        onTap: () {},
                       ),
                     );
                   }
@@ -228,9 +206,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   } else {
-                    return const Center(
-                      child: Text(AppStrings.unexpectedState),
-                    );
+                    return Center(child: Text(AppStrings.unexpectedState));
                   }
                 },
               ),
