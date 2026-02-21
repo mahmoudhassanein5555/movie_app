@@ -40,6 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: AppColors.primaryColor,
         title: Text(
           AppStrings.search,
@@ -56,7 +57,7 @@ class _SearchScreenState extends State<SearchScreen> {
         padding: EdgeInsets.symmetric(horizontal: AppSizes.w24),
         child: Column(
           children: [
-            verticalSpace(44),
+            verticalSpace(20),
             TextField(
               style: TextStyle(
                 color: AppColors.whiteColor,
@@ -76,11 +77,12 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
             ),
+            verticalSpace(10),
             BlocBuilder<SearchCubit, SearchState>(
               bloc: _searchCubit,
               builder: (context, state) {
                 if (state is SearchInitial) {
-                  return const Center(child: NoSearchResultsWidget());
+                  return const Center(child: SizedBox(height: 10));
                 }
                 if (state is SearchLoading) {
                   return const Expanded(

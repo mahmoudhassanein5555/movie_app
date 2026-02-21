@@ -73,6 +73,10 @@ class _SearchDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Safe way to get the year:
+    final String year = (releaseDate != null && releaseDate!.length >= 4)
+        ? releaseDate!.substring(0, 4)
+        : AppStrings.unKnownValue;
     return Column(
       crossAxisAlignment: .start,
       spacing: 8,
@@ -97,7 +101,7 @@ class _SearchDetailsWidget extends StatelessWidget {
             ),
             horizontalSpace(4),
             Text(
-              rateValue?.toStringAsFixed(1) ?? "0.0",
+              rateValue?.toStringAsFixed(1) ?? AppStrings.unKnownValue,
               style: TextStyle(
                 fontFamily: AppStrings.fontMontserrat,
                 fontSize: AppSizes.sp12,
@@ -117,7 +121,7 @@ class _SearchDetailsWidget extends StatelessWidget {
             ),
             horizontalSpace(4),
             Text(
-              releaseDate.toString(),
+              year,
               style: TextStyle(
                 fontFamily: AppStrings.fontMontserrat,
                 fontSize: AppSizes.sp12,
@@ -137,7 +141,7 @@ class _SearchDetailsWidget extends StatelessWidget {
             ),
             horizontalSpace(4),
             Text(
-              releaseDate.toString(),
+              year,
               style: TextStyle(
                 fontFamily: AppStrings.fontMontserrat,
                 fontSize: AppSizes.sp12,

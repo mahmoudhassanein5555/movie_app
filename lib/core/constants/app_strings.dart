@@ -33,4 +33,7 @@ abstract class AppStrings {
   static const String errorTitleTwo = 'Something went wrong';
   static const String watchListBox = 'Watch List Box';
   static const String noSimilarMoviesFound = 'No similar movies found';
+  static const String unKnownValue = 'UnKnown';
+
+
 }
