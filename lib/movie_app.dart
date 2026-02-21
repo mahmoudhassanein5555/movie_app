@@ -13,6 +13,7 @@ class MovieApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
+        return MaterialApp(debugShowCheckedModeBanner: false, home: App());
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           home:App() ,
