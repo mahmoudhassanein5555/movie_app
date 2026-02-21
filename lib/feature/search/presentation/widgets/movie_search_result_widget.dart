@@ -37,7 +37,9 @@ class MovieSearchResultWidget extends StatelessWidget {
             fit: BoxFit.cover,
             placeholder: (context, url) => Container(
               color: AppColors.searchGreyColor,
-              child: const Center(child: CircularProgressIndicator()),
+              child: const Center(
+                child: CircularProgressIndicator(color: AppColors.orangeColor),
+              ),
             ),
             errorWidget: (context, url, error) =>
                 const Icon(Icons.error, color: Colors.white),

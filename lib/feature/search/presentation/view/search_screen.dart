@@ -107,7 +107,6 @@ class _SearchScreenState extends State<SearchScreen> {
                           verticalSpace(AppSizes.h16),
                       itemBuilder: (context, index) {
                         final movie = results[index];
-                        String realease = movie.releaseDate;
                         return MovieSearchResultWidget(
                           onTap: () {
                             Navigator.push(
@@ -119,7 +118,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             );
                           },
                           posterPath: movie.posterPath,
-                          releaseDate: realease,
+                          releaseDate: movie.releaseDate,
                           rateValue: movie.voteAverage,
                           title: movie.title,
                         );
