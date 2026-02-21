@@ -28,9 +28,6 @@ abstract class AppStrings {
   static const String fontMontserrat = 'Montserrat';
   static const String unexpectedState = "Unexpected state";
 
-  static const String fontPoppins = 'Poppins';
-  static const String fontRoboto = 'Roboto';
-  static const String fontMontserrat = 'Montserrat';
   static const String errorTitle = 'Error ';
   static const String errorTitleTwo = 'Something went wrong';
   static const String watchListBox = 'Watch List Box';
