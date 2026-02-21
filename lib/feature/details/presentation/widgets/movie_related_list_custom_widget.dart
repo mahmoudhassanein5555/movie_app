@@ -34,7 +34,19 @@ class MovieRelatedListCustomWidget extends StatelessWidget {
       );
     }
 
-    if (similarMovies.isEmpty) () => const SizedBox();
+    if (similarMovies.isEmpty) {
+      return Center(
+        child: Text(
+          AppStrings.noSimilarMoviesFound,
+          style: TextStyle(
+            color: AppColors.whiteColor,
+            fontSize: AppSizes.sp16,
+            fontWeight: .bold,
+            fontFamily: AppStrings.fontMontserrat,
+          ),
+        ),
+      );
+    }
 
     return Column(
       crossAxisAlignment: .start,

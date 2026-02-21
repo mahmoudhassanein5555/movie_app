@@ -4,6 +4,7 @@ import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_strings.dart';
 import 'package:movie_app/core/utils/app_sizes.dart';
 import 'package:movie_app/core/utils/spacing.dart';
+import 'package:movie_app/feature/details/presentation/view/details_screen.dart';
 import 'package:movie_app/feature/search/domain/use_case/search_use_case.dart';
 import 'package:movie_app/feature/search/presentation/view_model/search_cubit.dart';
 import 'package:movie_app/feature/search/presentation/widgets/movie_search_result_widget.dart';
@@ -55,7 +56,7 @@ class _SearchScreenState extends State<SearchScreen> {
         padding: EdgeInsets.symmetric(horizontal: AppSizes.w24),
         child: Column(
           children: [
-            verticalSpace(AppSizes.h44),
+            verticalSpace(44),
             TextField(
               style: TextStyle(
                 color: AppColors.whiteColor,
@@ -106,6 +107,15 @@ class _SearchScreenState extends State<SearchScreen> {
                         final movie = results[index];
                         String realease = movie.releaseDate;
                         return MovieSearchResultWidget(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    DetailsScreen(movieId: movie.id),
+                              ),
+                            );
+                          },
                           posterPath: movie.posterPath,
                           releaseDate: realease,
                           rateValue: movie.voteAverage,
