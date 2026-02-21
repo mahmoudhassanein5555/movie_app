@@ -123,7 +123,7 @@ class _SearchDetailsWidget extends StatelessWidget {
             ),
             horizontalSpace(4),
             Text(
-              year,
+              AppStrings.genere,
               style: TextStyle(
                 fontFamily: AppStrings.fontMontserrat,
                 fontSize: AppSizes.sp12,

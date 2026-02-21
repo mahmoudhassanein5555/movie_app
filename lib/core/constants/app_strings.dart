@@ -34,6 +34,5 @@ abstract class AppStrings {
   static const String watchListBox = 'Watch List Box';
   static const String noSimilarMoviesFound = 'No similar movies found';
   static const String unKnownValue = 'UnKnown';
-
-
+  static const String genere = 'Action';
 }
