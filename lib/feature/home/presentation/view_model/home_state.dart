@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:movie_app/feature/home/domain/entites/movies_entites.dart';
 
 sealed class HomeState {}

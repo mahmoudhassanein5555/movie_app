@@ -7,6 +7,7 @@ import 'package:movie_app/feature/home/data/model/movie_dto.dart';
 class HomeDataSourceImp implements HomeDataSource {
   final HomeApi _homeApi;
   HomeDataSourceImp(this._homeApi);
+
   @override
   Future<ApiResult<MoviesEntites>> getRecommendedMovies() async {
     final result = await _homeApi.getRecommendedMovies();
@@ -40,13 +41,7 @@ class HomeDataSourceImp implements HomeDataSource {
       case ApiSuccess<MoviesDto>():
         final moviesDto = result.data;
         final moviesEntites = moviesDto.toEntity();
-      final movies =  moviesEntites.results!.where((e)=>e.posterPath != null).toList();
-      // final movies=  moviesEntites.results!
-      //       .where((e) => e.posterPath != null)
-      //       .map((e) => e.posterPath!)
-      //       .toList();
         return ApiSuccess<MoviesEntites>(moviesEntites);
-
       case ApiError<MoviesDto>():
         return ApiError<MoviesEntites>(result.errorMessage);
     }

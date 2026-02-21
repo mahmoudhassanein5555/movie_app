@@ -1,3 +1,5 @@
+// import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/constants/api_constant.dart';
@@ -156,16 +158,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: (index) {
                           final movieId = state.listOfMovies[index].id;
                           _navigateToDetails(context, movieId ?? 0);
-                          print("******************************************");
-                          print("path");
-                          print(state.listOfMovies[index].posterPath);
-                          print("title");
-                          print(state.listOfMovies[index].title);
-                          print("video");
-                          print(state.listOfMovies[index].video);
-                          print("voteCount");
-                          print(state.listOfMovies[index].voteCount);
-                          print("******************************************");
                         },
                       ),
                     );

@@ -23,6 +23,7 @@ class RecommendedCubit extends Cubit<HomeState> {
       emit(HomeError(result.errorMessage));
     }
   }
+  
 }
 
 sealed class HomeIntent {}

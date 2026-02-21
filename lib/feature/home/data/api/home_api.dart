@@ -5,6 +5,7 @@ import 'package:movie_app/core/network/api_result.dart';
 import 'package:movie_app/feature/home/data/model/movie_dto.dart';
 
 class HomeApi {
+  
   Future<ApiResult<MoviesDto>> getRecommendedMovies() async {
     try {
       Uri url = Uri.https(

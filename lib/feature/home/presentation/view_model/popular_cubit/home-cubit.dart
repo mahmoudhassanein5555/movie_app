@@ -6,7 +6,8 @@ import 'package:movie_app/feature/home/presentation/view_model/home_state.dart';
 
 class PopularCubit extends Cubit<HomeState> {
   PopularCubit(this._getPopularMoviesUseCase) : super(HomeInitial());
-  GetPopularMoviesUseCase _getPopularMoviesUseCase;
+  late final GetPopularMoviesUseCase _getPopularMoviesUseCase;
+  
   Future<void> intent(HomeIntent intent) async {
     if (intent is PopularMoviesIntent) {
       await _getPopularMovies();
@@ -23,6 +24,7 @@ class PopularCubit extends Cubit<HomeState> {
       emit(HomeError(result.errorMessage));
     }
   }
+
 }
 
 sealed class HomeIntent {}
