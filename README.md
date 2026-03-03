@@ -30,7 +30,7 @@ The application follows a strict Clean Architecture approach, ensuring the separ
 - Feature-first Modularization: Each feature (Home, Search, Watchlist, Details) is self-contained.
 
 Project Structure:
-
+```
 lib/
 ├── core/                        . Global themes, constants, and shared utilities
 ├── features/
